@@ -10,8 +10,8 @@ const PHRASES = [
   { lead: "Define the space", payoff: "add perspective." },
 ];
 
-const CYCLE_DURATION = 4000; // ms per phrase
-const TRANSITION_DURATION = 0.8;
+const HOLD_DURATION = 2500; // ms each text is visible before transitioning
+const TRANSITION_DURATION = 1.2; // slower, softer dissolve
 
 export default function Hero() {
   const [index, setIndex] = useState(0);
@@ -27,16 +27,16 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
-    // Show lead first, then after a pause, dissolve to payoff
+    // Equal timing: lead holds, then payoff holds, then next phrase
     setShowPayoff(false);
 
     const payoffTimer = setTimeout(() => {
       setShowPayoff(true);
-    }, CYCLE_DURATION * 0.45);
+    }, HOLD_DURATION);
 
     const nextTimer = setTimeout(() => {
       setIndex((prev) => (prev + 1) % PHRASES.length);
-    }, CYCLE_DURATION);
+    }, HOLD_DURATION * 2);
 
     return () => {
       clearTimeout(payoffTimer);
@@ -68,33 +68,35 @@ export default function Hero() {
       </div>
 
       {/* Animated text */}
-      <div className="relative z-10 text-center px-6 h-[clamp(4rem,12vw,10rem)] flex items-center justify-center">
+      <div className="relative z-10 text-center px-6 h-12 md:h-16 flex items-center justify-center">
         <AnimatePresence mode="wait">
           {!showPayoff ? (
             <motion.h1
               key={`lead-${index}`}
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12, filter: "blur(6px)" }}
+              exit={{ opacity: 0, y: -10, filter: "blur(6px)" }}
               transition={{
                 duration: TRANSITION_DURATION,
                 ease: EASE_CINEMATIC,
               }}
-              className="font-serif text-[clamp(2rem,5.5vw,4.5rem)] font-light tracking-[0.08em] text-foreground/80 leading-none"
+              className="text-[clamp(1.25rem,3vw,2rem)] tracking-[0.15em] text-foreground/70 leading-none"
+              style={{ fontFamily: "'Italiana', serif" }}
             >
               {current.lead}
             </motion.h1>
           ) : (
             <motion.h1
               key={`payoff-${index}`}
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12, filter: "blur(6px)" }}
+              exit={{ opacity: 0, y: -10, filter: "blur(6px)" }}
               transition={{
                 duration: TRANSITION_DURATION,
                 ease: EASE_CINEMATIC,
               }}
-              className="font-serif text-[clamp(2.5rem,7vw,5.5rem)] font-light tracking-[0.12em] text-foreground leading-none"
+              className="text-[clamp(1.25rem,3vw,2rem)] tracking-[0.15em] text-foreground leading-none"
+              style={{ fontFamily: "'Italiana', serif" }}
             >
               {current.payoff}
             </motion.h1>

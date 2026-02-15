@@ -31,7 +31,7 @@ export const ABOUT = {
 
 export const PHILOSOPHY = {
   heading: "Philosophy",
-  text: "We're all telling stories with our images. Whether photos of an event, a real estate listing, that beach side cafe, or a special activity. Drone shots add to this story and bring true perspective. A single aerial shot can reveal what ground-level photography never will — the scale of a property, the curve of a coastline, the relationship between a building and its surroundings. I believe in minimal, intentional work. One great shot is worth more than a hundred average ones.",
+  text: "Images tell stories. Whether photos of an event, a real estate listing, that beach side cafe, or a special activity. Drone shots add to this story and bring true perspective. A single aerial shot can reveal what ground-level photography never will — the scale of a property, the curve of a coastline, the relationship between a building and its surroundings. I believe in minimal, intentional work. One great shot is worth more than a hundred average ones.",
   image: unsplash("1470071459604-3b5ec3a7fe05"), // Cinematic misty aerial
 };
 
