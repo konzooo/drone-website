@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #0A0A0A;
+  --color-background-secondary: #141414;
+  --color-background-accent: #1A1A1A;
+  --color-foreground: #F5F5F5;
+  --color-foreground-secondary: #A0A0A0;
+  --color-accent: #C9A96E;
+  --color-accent-hover: #B8944F;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+}
+
+/* Hide scrollbar for clean look */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-foreground-secondary);
+  border-radius: 3px;
+}
+
+/* Video elements should never show controls */
+video::-webkit-media-controls {
+  display: none !important;
+}
