@@ -11,6 +11,7 @@ export const metadata: Metadata = {
       "Professional drone footage that transforms how properties are seen.",
     type: "website",
   },
+  robots: "index, follow",
 };
 
 export default function RootLayout({
