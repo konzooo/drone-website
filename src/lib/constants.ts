@@ -25,13 +25,13 @@ export const HERO = {
 
 export const ABOUT = {
   heading: "About",
-  bio: "I'm a drone pilot and cinematographer currently based in Sri Lanka. I've spent years capturing properties, landscapes, and experiences from angles most people never see. I work with hotels, resorts, and property companies who want visuals that make people book.",
+  bio: "I'm a drone pilot and cinematographer currently based in Sri Lanka. I've spent years capturing properties, landscapes, and experiences from angles most people never see. I work on events and film sets to add a unique perspective but also with hotels and resorts who want visuals that make people book.",
   image: unsplash("1544551763-46a013bb70d5"), // Atmospheric aerial landscape
 };
 
 export const PHILOSOPHY = {
   heading: "Philosophy",
-  text: "Images tell stories. Whether photos of an event, a real estate listing, that beach side cafe, or a special activity. Drone shots add to this story and bring true perspective. A single aerial shot can reveal what ground-level photography never will — the scale of a property, the curve of a coastline, the relationship between a building and its surroundings. I believe in minimal, intentional work. One great shot is worth more than a hundred average ones.",
+  text: "Images tell stories. Whether photos of an event, a real estate listing, that beach side cafe, or a special activity. And a single aerial shot can reveal what ground-level photography never will — the scale of a property, the curve of a coastline, the relationship between a building and its surroundings. I believe in minimal, intentional work. One great shot is worth more than a hundred average ones.",
   image: unsplash("1470071459604-3b5ec3a7fe05"), // Cinematic misty aerial
 };
 
@@ -54,15 +54,14 @@ export const PERSPECTIVES = [
     title: "Nature",
     description:
       "Coastlines, mountains, jungles — landscapes that deserve to be seen the way they were meant to be. From above.",
-    // Turquoise waters meeting green coastline
-    image: unsplash("1757803180897-f5d25c6b5eb5"),
+    image: "/videos/Sri Lanka Train.mp4",
   },
   {
     title: "Events",
     description:
       "Weddings, festivals, gatherings. Aerial coverage turns a moment into a memory that captures the full scale of the occasion.",
-    // Beach wedding with canopy and guests from above
-    image: unsplash("1766104802307-c30a9da48de1"),
+    // Aerial drone shot of outdoor concert with crowd
+    image: unsplash("1748958342433-62a2e656ba9d"),
   },
   {
     title: "Activities",
@@ -79,4 +78,7 @@ export const CONTACT = {
     "Have a property, project, or idea? I'd love to hear about it.",
   ctaText: "Get In Touch",
   mailtoSubject: "Drone Footage Inquiry",
+  name: "Konstantin Kaschub",
+  email: "kons_k@hotmail.de",
+  whatsapp: "+34611616916",
 };

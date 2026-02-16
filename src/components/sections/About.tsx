@@ -9,11 +9,13 @@ export default function About() {
       <div className="max-w-6xl mx-auto">
         <div className="max-w-2xl mx-auto text-center">
           <FadeIn>
-            {/* Portrait placeholder */}
-            <div className="w-24 h-24 rounded-full bg-background-accent mx-auto mb-8 overflow-hidden">
-              <div className="w-full h-full flex items-center justify-center text-foreground-secondary text-xs uppercase tracking-widest">
-                Photo
-              </div>
+            {/* Portrait */}
+            <div className="w-40 h-40 rounded-full bg-background-accent mx-auto mb-8 overflow-hidden">
+              <img
+                src="/images/Profile Image.PNG"
+                alt="Profile"
+                className="w-full h-full object-cover scale-125"
+              />
             </div>
           </FadeIn>
 

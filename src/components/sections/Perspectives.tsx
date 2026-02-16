@@ -28,15 +28,25 @@ function PerspectiveCard({
         !isEven ? "md:[direction:rtl]" : ""
       }`}
     >
-      {/* Image */}
+      {/* Image or Video */}
       <FadeIn className="md:[direction:ltr]">
         <div className="aspect-[3/2] rounded-lg overflow-hidden">
-          <motion.img
-            src={item.image}
-            alt={item.title}
-            style={{ y: imageY }}
-            className="w-[100%] h-[120%] object-cover"
-          />
+          {item.image.endsWith('.mp4') ? (
+            <video
+              src={item.image}
+              autoPlay
+              muted
+              loop
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <motion.img
+              src={item.image}
+              alt={item.title}
+              style={{ y: imageY }}
+              className="w-[100%] h-[120%] object-cover"
+            />
+          )}
         </div>
       </FadeIn>
 
