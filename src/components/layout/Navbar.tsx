@@ -20,11 +20,13 @@ export default function Navbar() {
       >
         <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16 md:h-20">
           {/* Logo / Text Mark */}
-          <a
-            href="#"
-            className="font-serif text-lg md:text-xl text-foreground tracking-[0.1em] font-light"
-          >
-            {SITE.name}
+          <a href="#" className="flex flex-col gap-0.5">
+            <span className="font-serif text-lg md:text-xl text-foreground tracking-[0.1em] font-light">
+              {SITE.name}
+            </span>
+            <span className="text-xs text-foreground-secondary tracking-[0.08em] font-light">
+              {SITE.tagline}
+            </span>
           </a>
 
           {/* Desktop Nav */}

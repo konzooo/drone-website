@@ -31,14 +31,27 @@ function PerspectiveCard({
       {/* Image or Video */}
       <FadeIn className="md:[direction:ltr]">
         <div className="aspect-[3/2] rounded-lg overflow-hidden">
+          {/* Desktop: video if available, otherwise image */}
           {item.image.endsWith('.mp4') ? (
-            <video
-              src={item.image}
-              autoPlay
-              muted
-              loop
-              className="w-full h-full object-cover"
-            />
+            <>
+              {/* Hide video on mobile, show on desktop */}
+              <video
+                src={item.image}
+                autoPlay
+                muted
+                loop
+                className="w-full h-full object-cover hidden md:block"
+              />
+              {/* Show mobile image on mobile if available */}
+              {item.mobileImage && (
+                <motion.img
+                  src={item.mobileImage}
+                  alt={item.title}
+                  style={{ y: imageY }}
+                  className="w-[100%] h-[120%] object-cover md:hidden"
+                />
+              )}
+            </>
           ) : (
             <motion.img
               src={item.image}

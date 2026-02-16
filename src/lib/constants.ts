@@ -4,6 +4,7 @@ const unsplash = (id: string, w = 1920) =>
 
 export const SITE = {
   name: "PTP Media",
+  tagline: "Drone videography & photography",
   email: "hello@ptpmedia.com",
   instagram: "@ptpmedia",
   location: "Based in Sri Lanka. Available across South and Southeast Asia.",
@@ -55,6 +56,7 @@ export const PERSPECTIVES = [
     description:
       "Coastlines, mountains, jungles — landscapes that deserve to be seen the way they were meant to be. From above.",
     image: "/videos/Sri Lanka Train.mp4",
+    mobileImage: "/images/nature.jpeg",
   },
   {
     title: "Events",
@@ -68,7 +70,8 @@ export const PERSPECTIVES = [
     description:
       "Surfing, diving, hiking — action looks different from 100 meters up. The kind of perspective that makes people want to be there.",
     // Aerial drone view of surfers in ocean waves
-    image: unsplash("1595586246500-2d8aa380b911"),
+    image: "/videos/activities_surf drone shot.mp4",
+    mobileImage: unsplash("1595586246500-2d8aa380b911"),
   },
 ];
 
