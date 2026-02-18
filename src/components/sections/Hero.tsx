@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { EASE_CINEMATIC } from "@/lib/animations";
 
@@ -55,8 +55,14 @@ export default function Hero() {
           muted
           loop
           playsInline
+          poster="/images/hero poster.png"
           className="w-full h-full object-cover contrast-[1.05] saturate-[1.1]"
         >
+          <source
+            src="/videos/hero-mobile.mp4"
+            type="video/mp4"
+            media="(max-width: 767px)"
+          />
           <source
             src="/videos/Drone Website Banner (full HD).mp4"
             type="video/mp4"

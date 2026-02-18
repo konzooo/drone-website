@@ -57,7 +57,6 @@ export const PERSPECTIVES = [
       "Coastlines, mountains, jungles — landscapes that deserve to be seen the way they were meant to be. From above.",
     image: "/videos/Sri Lanka Train.mp4",
     mobileImage: "/images/nature.jpeg",
-    poster: "/images/hero poster.png",
   },
   {
     title: "Events",
