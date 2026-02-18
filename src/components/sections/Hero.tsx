@@ -20,12 +20,35 @@ export default function Hero() {
   const [index, setIndex] = useState(0);
   const [showPayoff, setShowPayoff] = useState(false);
   const [videoSrc, setVideoSrc] = useState("");
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     setVideoSrc(
       window.innerWidth < 768 ? HERO_VIDEO_MOBILE : HERO_VIDEO_DESKTOP
     );
   }, []);
+
+  // Force autoplay on mobile — iOS often blocks autoplay until interaction
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const tryPlay = () => {
+      video.play().catch(() => {});
+    };
+
+    // Try immediately when video can play
+    video.addEventListener("canplay", tryPlay);
+    // Also try on first user interaction (touch/scroll)
+    document.addEventListener("touchstart", tryPlay, { once: true });
+    document.addEventListener("scroll", tryPlay, { once: true });
+
+    return () => {
+      video.removeEventListener("canplay", tryPlay);
+      document.removeEventListener("touchstart", tryPlay);
+      document.removeEventListener("scroll", tryPlay);
+    };
+  }, [videoSrc]);
 
   useEffect(() => {
     // Initial delay before starting the cycle
@@ -62,6 +85,7 @@ export default function Hero() {
       <div className="absolute inset-0">
         {videoSrc && (
           <video
+            ref={videoRef}
             key={videoSrc}
             autoPlay
             muted
