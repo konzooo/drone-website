@@ -1,9 +1,20 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import FadeIn from "@/components/ui/FadeIn";
 import { PERSPECTIVES } from "@/lib/constants";
+
+function useIsMobile(breakpoint = 768) {
+  const [isMobile, setIsMobile] = useState(true);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < breakpoint);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, [breakpoint]);
+  return isMobile;
+}
 
 function PerspectiveCard({
   item,
@@ -12,6 +23,7 @@ function PerspectiveCard({
   item: (typeof PERSPECTIVES)[0];
   index: number;
 }) {
+  const isMobile = useIsMobile();
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -31,10 +43,15 @@ function PerspectiveCard({
       {/* Image or Video */}
       <FadeIn className="md:[direction:ltr]">
         <div className="aspect-[3/2] rounded-lg overflow-hidden">
-          {/* Desktop: video if available, otherwise image */}
           {item.image.endsWith('.mp4') ? (
-            <>
-              {/* Desktop: autoplay video with poster */}
+            isMobile && item.mobileImage ? (
+              <motion.img
+                src={item.mobileImage}
+                alt={item.title}
+                style={{ y: imageY }}
+                className="w-[100%] h-[120%] object-cover"
+              />
+            ) : (
               <video
                 src={item.image}
                 autoPlay
@@ -42,18 +59,9 @@ function PerspectiveCard({
                 loop
                 playsInline
                 poster={item.poster || item.mobileImage}
-                className="w-full h-full object-cover hidden md:block"
+                className="w-full h-full object-cover"
               />
-              {/* Mobile: show static image instead of video */}
-              {item.mobileImage && (
-                <motion.img
-                  src={item.mobileImage}
-                  alt={item.title}
-                  style={{ y: imageY }}
-                  className="w-[100%] h-[120%] object-cover md:hidden"
-                />
-              )}
-            </>
+            )
           ) : (
             <motion.img
               src={item.image}
