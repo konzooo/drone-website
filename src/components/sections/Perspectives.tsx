@@ -44,14 +44,6 @@ function PerspectiveCard({
       <FadeIn className="md:[direction:ltr]">
         <div className="aspect-[3/2] rounded-lg overflow-hidden">
           {item.image.endsWith('.mp4') ? (
-            isMobile && item.mobileImage ? (
-              <motion.img
-                src={item.mobileImage}
-                alt={item.title}
-                style={{ y: imageY }}
-                className="w-[100%] h-[120%] object-cover"
-              />
-            ) : (
               <video
                 src={item.image}
                 autoPlay
@@ -61,7 +53,6 @@ function PerspectiveCard({
                 poster={item.poster || item.mobileImage}
                 className="w-full h-full object-cover"
               />
-            )
           ) : (
             <motion.img
               src={item.image}
