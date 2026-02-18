@@ -34,15 +34,17 @@ function PerspectiveCard({
           {/* Desktop: video if available, otherwise image */}
           {item.image.endsWith('.mp4') ? (
             <>
-              {/* Hide video on mobile, show on desktop */}
+              {/* Desktop: autoplay video with poster */}
               <video
                 src={item.image}
                 autoPlay
                 muted
                 loop
+                playsInline
+                poster={item.poster || item.mobileImage}
                 className="w-full h-full object-cover hidden md:block"
               />
-              {/* Show mobile image on mobile if available */}
+              {/* Mobile: show static image instead of video */}
               {item.mobileImage && (
                 <motion.img
                   src={item.mobileImage}
