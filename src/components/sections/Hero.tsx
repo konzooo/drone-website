@@ -13,9 +13,19 @@ const PHRASES = [
 const HOLD_DURATION = 2500; // ms each text is visible before transitioning
 const TRANSITION_DURATION = 1.2; // slower, softer dissolve
 
+const HERO_VIDEO_DESKTOP = "/videos/Drone Website Banner (full HD).mp4";
+const HERO_VIDEO_MOBILE = "/videos/hero-mobile.mp4";
+
 export default function Hero() {
   const [index, setIndex] = useState(0);
   const [showPayoff, setShowPayoff] = useState(false);
+  const [videoSrc, setVideoSrc] = useState("");
+
+  useEffect(() => {
+    setVideoSrc(
+      window.innerWidth < 768 ? HERO_VIDEO_MOBILE : HERO_VIDEO_DESKTOP
+    );
+  }, []);
 
   useEffect(() => {
     // Initial delay before starting the cycle
@@ -50,24 +60,18 @@ export default function Hero() {
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Video background */}
       <div className="absolute inset-0">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster="/images/hero poster.png"
-          className="w-full h-full object-cover contrast-[1.05] saturate-[1.1]"
-        >
-          <source
-            src="/videos/hero-mobile.mp4"
-            type="video/mp4"
-            media="(max-width: 767px)"
+        {videoSrc && (
+          <video
+            key={videoSrc}
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster="/images/hero poster.png"
+            className="w-full h-full object-cover contrast-[1.05] saturate-[1.1]"
+            src={videoSrc}
           />
-          <source
-            src="/videos/Drone Website Banner (full HD).mp4"
-            type="video/mp4"
-          />
-        </video>
+        )}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.3)_100%)]" />
         <div className="absolute inset-0 bg-black/40" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
